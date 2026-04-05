@@ -1,0 +1,28 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mariadb:latest
+    volumes:
+      - vol-gaming-db:/var/lib/mysql
+    secrets:
+      - mariadb_root
+    ports:
+      - "127.0.0.1:3306:3306" 
+    environment:
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/mariadb_root
+      MARIADB_DATABASE: gaming
+    restart: always
+
+volumes:
+  vol-gaming-db:
+
+secrets:
+  mariadb_root:
+    file: ./backend/mariadb-root-pw.txt
