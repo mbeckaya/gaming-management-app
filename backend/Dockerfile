@@ -15,6 +15,8 @@ COPY . /var/www/html
 # Install dependencies
 RUN composer install --no-interaction --no-dev --optimize-autoloader
 
+EXPOSE 8080
+
 # Change permissions
 RUN chown -R www-data:www-data /var/www/html && \ 
     chmod -R 775 storage bootstrap/cache

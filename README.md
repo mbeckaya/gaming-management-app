@@ -13,15 +13,15 @@ This project is structured as a **decoupled application**:
 - **Backend (API)**  
   RESTful API for managing game resources (CRUD operations)
 
-- **Frontend (SPA – coming soon)**  
-  A Vue.js Single Page Application that will consume the API
+- **Frontend (SPA – in progress)**  
+  A Vue Single Page Application that will consume the API
 
 ---
 
 # 🚧 Project Status
 
 - ✅ Backend API: **Completed & functional**
-- 🚧 Frontend (Vue SPA): **In progress – coming soon**
+- 🚧 Frontend (Vue SPA): **In progress**
 
 ---
 
@@ -36,10 +36,11 @@ This project is structured as a **decoupled application**:
 - **Docker**
 - **Docker Compose**
 
-## Frontend (planned)
-- **Vue.js (SPA)**
-- **Axios / Fetch API**
-- **Modern UI Framework (Tailwind + DaisyUI)**
+## Frontend (in progress)
+- **Vue**
+- **Pinia**
+- **Axios**
+- **Tailwind (DaisyUI)**
 
 ---
 
@@ -53,9 +54,6 @@ This project is structured as a **decoupled application**:
 ---
 
 # 🔮 Planned Features
-
-- Vue.js SPA frontend
-- API consumption via frontend
 - Improved UI/UX for game management
 
 ---
@@ -100,7 +98,8 @@ docker compose up --build -d
 
 This will start:
 
-* PHP (Laravel app)
+* Vue (Frontend)
+* PHP (Laravel API)
 * MariaDB database
 ---
 
