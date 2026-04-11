@@ -1,11 +1,14 @@
 <script setup lang="ts">
+    import { ref } from 'vue'
     import { useGamesStore } from '@/stores/games'
     import { storeToRefs } from 'pinia'
     import type { Column } from '@/types/columns'
+    import { ANIMATION_DURATION_ALERT } from '@/utils/constants'
     import LoadingState from '@/components/LoadingState.vue'
     import AlertMessage from '@/components/AlertMessage.vue'
     import TableList from '@/components/TableList.vue'
 
+    const isDeleted = ref(false)
     const gamesStore = useGamesStore()
     const { isLoading, error, games } = storeToRefs(gamesStore)
     const { fetchGames, removeGame } = gamesStore
@@ -19,8 +22,14 @@
         { label: 'Release', key: 'release' },
     ]
 
-    const handleDelete = (id: number) => {
-        removeGame(id)
+    const handleDelete = async (id: number) => {
+        await removeGame(id)
+
+        isDeleted.value = true
+
+        setTimeout(() => {
+            isDeleted.value = false
+        }, ANIMATION_DURATION_ALERT);
     }
 </script>
 
@@ -29,6 +38,10 @@
 
     <AlertMessage v-if="error" type="error" >
         {{ error }}
+    </AlertMessage>
+
+    <AlertMessage v-if="isDeleted" type="success" >
+         Game was successful deleted
     </AlertMessage>
 
     <TableList 
